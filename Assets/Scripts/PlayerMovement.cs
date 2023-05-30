@@ -26,5 +26,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayerByInput(){
         transform.Translate(new Vector3(rawInput.x, 0f, rawInput.y) * moveSpeed * Time.deltaTime);
+        
     }
 }
