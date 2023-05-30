@@ -27,7 +27,10 @@ public class PlayerMovement : MonoBehaviour
         modifiedInput = value.Get<Vector2>() * moveSpeed;
     }
 
-
+    private void OnFire(){
+        Debug.Log(GameObject.FindWithTag("Finish").transform.TransformPoint(new Vector3(5,0,5)));
+        Debug.Log(transform.position);
+    }
 
 
     private void MovePlayerByInput(){
