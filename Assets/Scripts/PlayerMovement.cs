@@ -5,13 +5,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Vector2 rawInput;
+    private Vector2 modifiedInput;
+    private float moveSpeed = 5000f;
     private Rigidbody playerRigidBody;
-    private float moveSpeed = 10f;
+    private ScoreHandler scoreHandler;
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody>();
+        scoreHandler = GetComponent<ScoreHandler>();
+        
     }
 
     // Update is called once per frame
@@ -21,11 +24,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnMove(InputValue value){
-        rawInput = value.Get<Vector2>();
+        modifiedInput = value.Get<Vector2>() * moveSpeed;
     }
 
+
+
+
     private void MovePlayerByInput(){
-        transform.Translate(new Vector3(rawInput.x, 0f, rawInput.y) * moveSpeed * Time.deltaTime);
+        // transform.Translate(new Vector3(modifiedInput.x, 0f, modifiedInput.y) * moveSpeed * Time.deltaTime);
+        playerRigidBody.velocity = new Vector3(modifiedInput.x, 0f, modifiedInput.y) * Time.deltaTime;
         
     }
 }
