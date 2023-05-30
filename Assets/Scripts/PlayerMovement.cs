@@ -17,10 +17,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(rawInput.x, 0, rawInput.y) * moveSpeed * Time.deltaTime);
+       MovePlayerByInput();
     }
 
     private void OnMove(InputValue value){
         rawInput = value.Get<Vector2>();
+    }
+
+    private void MovePlayerByInput(){
+        transform.Translate(new Vector3(rawInput.x, 0f, rawInput.y) * moveSpeed * Time.deltaTime);
     }
 }
