@@ -1055,7 +1055,7 @@ MonoBehaviour:
   blockPrefab: {fileID: 2939566052361904627, guid: 8109cd2233c9ab040ba29dea2bf30d7d,
     type: 3}
   edgeOffset: 10
-  blockLifetime: 5
+  blockLifetime: 30
 --- !u!1 &577653518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1241,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807605976}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 738d2b1de93926f448dfa800abd35e50, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1326,7 +1326,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &807605982
 MonoBehaviour:

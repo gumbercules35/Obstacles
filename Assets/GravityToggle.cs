@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class GravityToggle : MonoBehaviour
 {
-    // private Rigidbody blockRigidBody;
-    // void Start()
-    // {
-    //    blockRigidBody = GetComponent<Rigidbody>();
-    //    blockRigidBody.useGravity = false;
-    //    blockRigidBody.velocity = new Vector3(0, 0, 0); 
-    // }
+    private Rigidbody blockRigidBody;
+    private float startTime;
+    private float dropTime;
 
-    
-    // void Update()
-    // {
-    //   if (Input.GetMouseButtonDown(0)){
-    //     blockRigidBody.useGravity = true;
-    //   }   
-    // }
+    private void Awake() {
+       blockRigidBody = GetComponent<Rigidbody>();
+       startTime = Time.time;
+        
+    }
+    void Start()
+    {
+       dropTime = Random.Range(3, 10);
+       blockRigidBody.useGravity = false;
+       blockRigidBody.velocity = new Vector3(0, 0, 0); 
+    }
+
+    void Update()
+    {
+      if (Time.time - startTime > dropTime){
+        blockRigidBody.useGravity = true;
+      }   
+    }
 }
