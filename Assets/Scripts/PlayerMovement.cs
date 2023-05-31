@@ -28,8 +28,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnFire(){
-        Debug.Log(GameObject.FindWithTag("Finish").transform.TransformPoint(new Vector3(5,0,5)));
-        Debug.Log(transform.position);
+        
     }
 
 
