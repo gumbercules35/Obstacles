@@ -8,7 +8,8 @@ public class WallCollision : MonoBehaviour
     private Color initialMaterialColor;
     private ScoreHandler scoreHandler;
 
-    private int bonkCounter = 0;
+    
+    private bool hasBonked = false;
 
     private void Start() {
         scoreHandler = FindObjectOfType<ScoreHandler>();
@@ -16,14 +17,25 @@ public class WallCollision : MonoBehaviour
         initialMaterialColor = wallRenderer.material.color;
     }
     private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.tag == "Player"){
+        if(other.gameObject.tag == "Player" && !hasBonked){
             if(wallRenderer.material.color == initialMaterialColor){
                 wallRenderer.material.color = Color.red;
-            }else {
-                wallRenderer.material.color = initialMaterialColor;
+                
+                switch (gameObject.tag){
+                    case "Wall":
+                    scoreHandler.IncrementTotalBonks(1);
+                    break;
+                    case "Block":
+                    scoreHandler.IncrementTotalBonks(5);
+                    break;
+                    case "Spinner":
+                    scoreHandler.IncrementTotalBonks(2);
+                    break;
+                    default:
+                    break;
+                }
+                hasBonked = true;
             }
-            bonkCounter++;
-            scoreHandler.IncrementTotalBonks();
         }
     }
 }

@@ -11,15 +11,10 @@ public class BlockSpawner : MonoBehaviour
     private float zMinBound;
     private float zMaxBound;
 
-    private bool spawnToggle = false;
-
     [SerializeField] float edgeOffset = 10f;
     [SerializeField] float blockLifetime = 30f;
     
-    //DEBUG VAR
-    private int spawnedBlockCount = 0;
-    private int numberOfSpawns = 0;
-    // Start is called before the first frame update
+
     void Start()
     {
         InitialiseBounds();
@@ -27,7 +22,6 @@ public class BlockSpawner : MonoBehaviour
         // StartCoroutine(SpawnBlocks(5));
     }
 
-    // Update is called once per frame
     void Update()
     {
         // if(Mathf.Floor(Time.time) % 2 == 1 && !spawnToggle){
@@ -72,6 +66,7 @@ public class BlockSpawner : MonoBehaviour
                     float spawnZ = Random.Range(zMinBound + edgeOffset, zMaxBound - edgeOffset);
                     float spawnY = Random.Range(15,50);
                     GameObject block = Instantiate(blockPrefab, new Vector3(spawnX, spawnY, spawnZ), Quaternion.identity, transform);
+                    block.tag = "Block";
                     Destroy(block, blockLifetime);
             }
     }

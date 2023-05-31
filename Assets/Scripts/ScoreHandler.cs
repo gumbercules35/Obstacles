@@ -14,8 +14,8 @@ public class ScoreHandler : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
   }
-  public void IncrementTotalBonks(){
-    totalBonks ++;
+  public void IncrementTotalBonks(int incrementValue){
+    totalBonks += incrementValue;
   }
   public int GetTotalBonks(){
     return totalBonks;
